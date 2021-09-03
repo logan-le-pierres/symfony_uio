@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		{# Run `composer require symfony/webpack-encore-bundle`
+																		           and uncomment the following Encore helpers to start using Symfony UX #}
+		{% block stylesheets %}
+			{# <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> #}
+		{{ encore_entry_link_tags('app') }}
+
+		{% endblock %}
+		<link href="{{ asset('css/homeStyle.css') }}" type="text/css" rel="stylesheet">
+
+		{% block javascripts %}
+		{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+		{% if app.user %}
+			<a href="{{ path('security_logout') }}" class="btn btn-danger logout">Logout</a>
+		{% endif %}
+
+		{% block body %}
+
+
+			{% include "shared/_loginForm.html.twig" %}
+		{% endblock %}
+
+	</body>
+</html>
+
+
+{# {% if user == null  %}
+	
+			<h1>
+				Hello Visitor, click here to visit you'r bundle view and send validation after.Thanks</h1>
+	
+		{% elseif user.name == "Arthur Rey" %}
+			<h1>Bonjour Maitre Myria-Logz!</h1>
+		{% else %}
+	
+	
+			<h1>Hello
+				{{ user.name }}
+				votre job de
+				{{ user.job }}
+				vous plait-il toujours ?</h1>
+			<h1>{{user.id}} est votre identifiant</h1>
+	
+		{% endif %}
+		<div class="container">
+			<img src="https://picsum.photos/400/600" class="img" alt="Legendary">
+			<textarea name="description" id="textarea" cols="150" rows="10"></textarea>
+		</div>
+		<div>
+		
+		</div> #}
